@@ -9,7 +9,7 @@
 ## Installation
 
 ```r
-source("genzplyr.R")
+pak::pak("hadley/genzplyr")
 ```
 
 ## The translation guide
