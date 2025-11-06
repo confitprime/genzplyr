@@ -1,4 +1,4 @@
-# genzplyr 💅
+# genzplyr 💅 <a href="https://hadley.github.io/genzplyr/"><img src="man/figures/logo.png" align="right" height="120" alt="genzplyr website" /></a>
 
 > dplyr but make it bussin fr fr no cap
 
