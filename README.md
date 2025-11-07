@@ -28,6 +28,7 @@ pak::pak("hadley/genzplyr")
 | `pull()` | `main_character()` | Extract a column (give it main character energy) |
 | `slice_head()` | `send_it()` | Take the top rows and send it |
 | `count()` | `its_giving()` | Count occurrences (it's giving statistics) |
+| `n_distinct()` | `say_less()` | When you just want the unique combination of values. 
 
 ## Examples that slap
 
@@ -184,6 +185,7 @@ PRs welcome! Got better GenZ slang? Submit a pull request and let's make this ev
 - **Send it**: Go for it, commit fully
 - **It's giving...**: It's giving off vibes of...
 - **Hits different**: Has a unique, special quality
+- **Say less**: When you just want the unique combination of values in a vector or vectors.
 
 ## License
 
