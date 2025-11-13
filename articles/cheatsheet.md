@@ -1,0 +1,235 @@
+# genzplyr Cheat Sheet 📋💅
+
+## Quick reference guide
+
+### Data filtering and selection
+
+``` r
+# Filter rows (remove what you don't want)
+df |> yeet(age > 18, score > 70)
+
+# Select columns (vibe check which ones matter)
+df |> vibe_check(name, age, score)
+df |> vibe_check(starts_with("test"))
+df |> vibe_check(-id)  # everything except id
+```
+
+### Data transformation
+
+``` r
+# Create/modify columns (give your data a glow up)
+df |> glow_up(
+  age_squared = age^2,
+  is_adult = age >= 18,
+  score_scaled = scale(score)
+)
+
+# Rename columns (lowkey change names)
+df |> lowkey(
+  years_old = age,
+  test_score = score
+)
+```
+
+### Sorting and arrangement
+
+``` r
+# Sort data (by slay factor)
+df |> slay(score)           # ascending
+df |> slay(desc(score))     # descending
+df |> slay(age, desc(score)) # multiple columns
+```
+
+### Grouping and summarizing
+
+``` r
+# Group data (squad up)
+df |> squad_up(category)
+
+# Summarize (no cap, real stats only)
+df |> no_cap(
+  avg_score = mean(score),
+  total = n(),
+  max_age = max(age)
+)
+
+# Combined
+df |> 
+  squad_up(category) |>
+  no_cap(avg_score = mean(score)) |>
+  disband()  # ungroup when done
+```
+
+### Data inspection
+
+``` r
+# Get unique values (periodt, no duplicates)
+df |> periodt(category)
+
+# Count occurrences (it's giving frequency table)
+df |> its_giving(category)
+df |> its_giving(category, status)
+
+# Take first n rows (send it)
+df |> send_it(10)  # top 10 rows
+
+# Extract a column (main character energy)
+ages <- df |> main_character(age)
+```
+
+## Common patterns that go hard
+
+### Pattern 1: Filter, transform, sort
+
+``` r
+data |>
+  yeet(condition) |>
+  glow_up(new_var = calculation) |>
+  slay(desc(new_var))
+```
+
+### Pattern 2: Group analysis
+
+``` r
+data |>
+  squad_up(group_var) |>
+  no_cap(
+    mean_val = mean(value),
+    count = n()
+  ) |>
+  slay(desc(mean_val))
+```
+
+### Pattern 3: Data cleaning
+
+``` r
+data |>
+  periodt() |>                    # remove duplicates
+  yeet(!is.na(important_col)) |> # remove missing
+  vibe_check(needed_cols) |>     # keep only what matters
+  lowkey(better_name = old_name) # rename
+```
+
+### Pattern 4: Top N by group
+
+``` r
+data |>
+  squad_up(category) |>
+  slay(desc(score)) |>
+  send_it(3) |>      # top 3 per group
+  disband()
+```
+
+## Banding together: Joins
+
+Using the following tables:
+
+``` r
+df1 <- data.frame(id = 1:3, name = c("Alice", "Bob", "Charlie"))
+df2 <- data.frame(id = c(2, 3, 4), score = c(90, 85, 88))
+```
+
+### Left join
+
+``` r
+df1 |> link_up(df2, by = "id")
+```
+
+### Right join
+
+``` r
+df1 |> clout_chase(df2, by = "id")
+```
+
+### Inner join
+
+``` r
+df1 |> mutuals_only(df2, by = "id")
+```
+
+### Full join
+
+``` r
+df1 |> everyone_in_the_groupchat(df2, by = "id")
+```
+
+### Anti join
+
+``` r
+df1 |> ghost(df2, by = "id")
+```
+
+### Semi join
+
+``` r
+df1 |> only_the_reals(df2, by = "id")
+```
+
+## Combining with regular dplyr
+
+Mix and match! It’s all compatible:
+
+``` r
+mtcars |>
+  yeet(mpg > 20) |>
+  mutate(kpg = mpg * 1.6) |>  # regular dplyr
+  vibe_check(mpg, kpg, hp) |>
+  filter(hp > 100) |>          # regular dplyr
+  slay(desc(kpg))
+```
+
+## Pro tips
+
+1.  **Pipe game strong**: Use `|>` or `%>%` to chain operations
+2.  **Vibe check early**: Select columns you need first to speed things
+    up
+3.  **Squad up strategically**: Group before summarizing
+4.  **Don’t forget to disband**: Ungroup when you’re done with grouped
+    operations
+5.  **Main character usage**: Use
+    [`main_character()`](https://hadley.github.io/genzplyr/reference/main_character.md)
+    when you need a vector, not a data frame
+
+## Debugging tips
+
+If something’s not working:
+
+- Check your parentheses and commas
+- Make sure you’re piping (`|>`) between functions
+- Verify column names (they’re case-sensitive)
+- Use `glimpse()` or [`head()`](https://rdrr.io/r/utils/head.html)
+  between steps to check your data
+
+## Most common combos
+
+``` r
+# The "I need quick stats" combo
+df |> 
+  squad_up(group) |> 
+  no_cap(avg = mean(value), count = n())
+
+# The "show me the best" combo  
+df |> 
+  yeet(condition) |> 
+  slay(desc(score)) |> 
+  send_it(5)
+
+# The "clean this mess" combo
+df |>
+  periodt() |>
+  yeet(!is.na(key_column)) |>
+  vibe_check(needed_columns)
+
+# The "make it pretty" combo
+df |>
+  lowkey(nice_name = ugly_name) |>
+  glow_up(formatted = format(value, digits = 2)) |>
+  slay(nice_name)
+```
+
+------------------------------------------------------------------------
+
+**Remember**: This is just dplyr with a personality. Everything that
+works in dplyr works here too!
+
+*Keep slaying your data analysis fr fr* 🔥

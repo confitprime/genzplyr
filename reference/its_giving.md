@@ -1,0 +1,38 @@
+# Its giving... count occurrences
+
+Count observations by group (count equivalent)
+
+## Usage
+
+``` r
+its_giving(.data, ...)
+```
+
+## Arguments
+
+- .data:
+
+  A data frame or tibble
+
+- ...:
+
+  Variables to count by
+
+## Value
+
+A data frame with counts
+
+## Examples
+
+``` r
+mtcars |> its_giving(cyl, gear)
+#>   cyl gear  n
+#> 1   4    3  1
+#> 2   4    4  8
+#> 3   4    5  2
+#> 4   6    3  2
+#> 5   6    4  4
+#> 6   6    5  1
+#> 7   8    3 12
+#> 8   8    5  2
+```
